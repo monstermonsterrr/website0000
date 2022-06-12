@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register page!</title>
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<form id="form" th:action="@{/addUser}" style="text-align: center">
+    USERNAME：<input type="text"  id="username" name="username"><br>
+    PASSWORD：<input type="password"  id="password" name="password"><br>
+    COMFIRM PASSWORD：<input type="password"  id="comfirmpass" name="comfirmpass"><br>
+    <button type="submit" id="submitBut" name="submitBut"
+            style="background-color: cornflowerblue">submit now！</button><br>
+
+</form>
+</body>
+</html>

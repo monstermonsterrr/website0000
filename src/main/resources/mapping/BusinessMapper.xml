@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dreamer.website.dao.BusinessMapper">
+  <resultMap id="BaseResultMap" type="dreamer.website.pojo.Business">
+    <id column="busiId" jdbcType="VARCHAR" property="busiid" />
+    <result column="busiVolume" jdbcType="INTEGER" property="busivolume" />
+    <result column="busiCreAccIbsn" jdbcType="VARCHAR" property="busicreaccibsn" />
+    <result column="busiDebAccIbsn" jdbcType="VARCHAR" property="busidebaccibsn" />
+    <result column="busiDescription" jdbcType="VARCHAR" property="busidescription" />
+    <result column="busiCreateTime" jdbcType="TIMESTAMP" property="busicreatetime" />
+    <result column="busiZeroDate" jdbcType="TIMESTAMP" property="busizerodate" />
+    <result column="busiUserId" jdbcType="VARCHAR" property="busiuserid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    busiId, busiVolume, busiCreAccIbsn, busiDebAccIbsn, busiDescription, busiCreateTime, 
+    busiZeroDate, busiUserId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accbusiness
+    where busiId = #{busiid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from accbusiness
+    where busiId = #{busiid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="dreamer.website.pojo.Business">
+    insert into accbusiness (busiId, busiVolume, busiCreAccIbsn, 
+      busiDebAccIbsn, busiDescription, busiCreateTime, 
+      busiZeroDate, busiUserId)
+    values (#{busiid,jdbcType=VARCHAR}, #{busivolume,jdbcType=INTEGER}, #{busicreaccibsn,jdbcType=VARCHAR}, 
+      #{busidebaccibsn,jdbcType=VARCHAR}, #{busidescription,jdbcType=VARCHAR}, #{busicreatetime,jdbcType=TIMESTAMP}, 
+      #{busizerodate,jdbcType=TIMESTAMP}, #{busiuserid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dreamer.website.pojo.Business">
+    insert into accbusiness
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="busiid != null">
+        busiId,
+      </if>
+      <if test="busivolume != null">
+        busiVolume,
+      </if>
+      <if test="busicreaccibsn != null">
+        busiCreAccIbsn,
+      </if>
+      <if test="busidebaccibsn != null">
+        busiDebAccIbsn,
+      </if>
+      <if test="busidescription != null">
+        busiDescription,
+      </if>
+      <if test="busicreatetime != null">
+        busiCreateTime,
+      </if>
+      <if test="busizerodate != null">
+        busiZeroDate,
+      </if>
+      <if test="busiuserid != null">
+        busiUserId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="busiid != null">
+        #{busiid,jdbcType=VARCHAR},
+      </if>
+      <if test="busivolume != null">
+        #{busivolume,jdbcType=INTEGER},
+      </if>
+      <if test="busicreaccibsn != null">
+        #{busicreaccibsn,jdbcType=VARCHAR},
+      </if>
+      <if test="busidebaccibsn != null">
+        #{busidebaccibsn,jdbcType=VARCHAR},
+      </if>
+      <if test="busidescription != null">
+        #{busidescription,jdbcType=VARCHAR},
+      </if>
+      <if test="busicreatetime != null">
+        #{busicreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="busizerodate != null">
+        #{busizerodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="busiuserid != null">
+        #{busiuserid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="dreamer.website.pojo.Business">
+    update accbusiness
+    <set>
+      <if test="busivolume != null">
+        busiVolume = #{busivolume,jdbcType=INTEGER},
+      </if>
+      <if test="busicreaccibsn != null">
+        busiCreAccIbsn = #{busicreaccibsn,jdbcType=VARCHAR},
+      </if>
+      <if test="busidebaccibsn != null">
+        busiDebAccIbsn = #{busidebaccibsn,jdbcType=VARCHAR},
+      </if>
+      <if test="busidescription != null">
+        busiDescription = #{busidescription,jdbcType=VARCHAR},
+      </if>
+      <if test="busicreatetime != null">
+        busiCreateTime = #{busicreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="busizerodate != null">
+        busiZeroDate = #{busizerodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="busiuserid != null">
+        busiUserId = #{busiuserid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where busiId = #{busiid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dreamer.website.pojo.Business">
+    update accbusiness
+    set busiVolume = #{busivolume,jdbcType=INTEGER},
+      busiCreAccIbsn = #{busicreaccibsn,jdbcType=VARCHAR},
+      busiDebAccIbsn = #{busidebaccibsn,jdbcType=VARCHAR},
+      busiDescription = #{busidescription,jdbcType=VARCHAR},
+      busiCreateTime = #{busicreatetime,jdbcType=TIMESTAMP},
+      busiZeroDate = #{busizerodate,jdbcType=TIMESTAMP},
+      busiUserId = #{busiuserid,jdbcType=VARCHAR}
+    where busiId = #{busiid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAll"  resultType="dreamer.website.pojo.Business">
+    SELECT * FROM accbusiness
+  </select>
+</mapper>

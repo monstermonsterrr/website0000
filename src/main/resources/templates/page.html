@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>External Page</title>
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<h3 style="text-align: center">External Page</h3>
+<table border="1" style="align-content: center">
+    <tr >
+        <th>时间</th>
+        <th>汇率</th>
+        <th>货币对</th>
+        <th>贷方总值</th>
+    </tr>
+    <!--@thymesVar id="businessList" type="java.util.List"-->
+    <tr th:each="date:${huilvList}">
+        <td th:text="${date.time}"></td>
+        <td th:text="${date.price}"></td>
+        <td th:text="${date.namedesc}"></td>
+        <td th:text="${date.time}"></td>
+    </tr>
+    <br>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Trasaction page!</title>
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<h3 style="text-align: center">Transaction Page</h3>
+<table border="1" style="text-align: center" >
+    <tr >
+        <th>Transaction ID</th>
+        <th>Transaction Volume</th>
+        <th>TransactionCreIBSN</th>
+        <th>TransactionDebIBSN</th>
+        <th>TransactionZeroDate</th>
+        <th>TransactionCreateTime</th>
+    </tr>
+    <!--@thymesVar id="businessList" type="java.util.List"-->
+    <tr th:each="business:${businessList}">
+        <td th:text="${business.getBusiid()}">row 1, cell 1</td>
+        <td th:text="${business.getBusivolume()}"></td>
+        <td th:text="${business.getBusicreaccibsn()}"></td>
+        <td th:text="${business.getBusidebaccibsn()}"></td>
+        <td th:text="${business.getBusizerodate()}"></td>
+        <td th:text="${business.getBusicreatetime()}"></td>
+        <td><a href="/page">当前汇率查询</a></td>
+    </tr>
+    <br>
+
+</table>
+</body>
+</html>

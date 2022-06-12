@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Trasaction page!</title>
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<h3 style="text-align: center">Transaction Add</h3>
+<form id="Transactionform" th:action="@{/addTran}" style="text-align: center">
+    BUSICREBIAN：<input type="text"  id="busiCreAccIbsn" name="busiCreAccIbsn"><br>
+    BUSIDEBBIAN：<input type="text"  id="busiDebAccIbsn" name="busiDebAccIbsn"><br>
+    BUSIVOLUME：<input type="text"  id="busiVolume" name="busiVolume"><br>
+    BUSIDESCRIPTHIN：<input type="text"  id="busiDescription" name="busiDescription"><br>
+    BUSIZERODATE：<input type="text"  id="busiZeroDate" name="busiZeroDate"><br>
+    <button type="submit" id="submitTra" name="submitTra"
+            style="background-color: cornflowerblue">submit now！</button><br>
+    <a href="/addAccount">Add Account NOW?</a>
+
+
+</form>
+</body>
+</html>

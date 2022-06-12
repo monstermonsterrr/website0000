@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dreamer.website.dao.AccountMapper">
+  <resultMap id="BaseResultMap" type="dreamer.website.pojo.Account">
+    <id column="accIBSN" jdbcType="VARCHAR" property="accibsn" />
+    <result column="accUserId" jdbcType="VARCHAR" property="accuserid" />
+    <result column="accSurplus" jdbcType="INTEGER" property="accsurplus" />
+    <result column="accAccountName" jdbcType="VARCHAR" property="accaccountname" />
+    <result column="accPass" jdbcType="VARCHAR" property="accpass" />
+    <result column="accCreateAddress" jdbcType="VARCHAR" property="acccreateaddress" />
+    <result column="accCreateTime" jdbcType="TIMESTAMP" property="acccreatetime" />
+    <result column="accDescription" jdbcType="VARCHAR" property="accdescription" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    accIBSN, accUserId, accSurplus, accAccountName, accPass, accCreateAddress, accCreateTime, 
+    accDescription
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accaccount
+    where accIBSN = #{accibsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from accaccount
+    where accIBSN = #{accibsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="dreamer.website.pojo.Account">
+    insert into accaccount (accIBSN, accUserId, accSurplus, 
+      accAccountName, accPass, accCreateAddress, 
+      accCreateTime, accDescription)
+    values (#{accibsn,jdbcType=VARCHAR}, #{accuserid,jdbcType=VARCHAR}, #{accsurplus,jdbcType=INTEGER}, 
+      #{accaccountname,jdbcType=VARCHAR}, #{accpass,jdbcType=VARCHAR}, #{acccreateaddress,jdbcType=VARCHAR}, 
+      #{acccreatetime,jdbcType=TIMESTAMP}, #{accdescription,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dreamer.website.pojo.Account">
+    insert into accaccount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accibsn != null">
+        accIBSN,
+      </if>
+      <if test="accuserid != null">
+        accUserId,
+      </if>
+      <if test="accsurplus != null">
+        accSurplus,
+      </if>
+      <if test="accaccountname != null">
+        accAccountName,
+      </if>
+      <if test="accpass != null">
+        accPass,
+      </if>
+      <if test="acccreateaddress != null">
+        accCreateAddress,
+      </if>
+      <if test="acccreatetime != null">
+        accCreateTime,
+      </if>
+      <if test="accdescription != null">
+        accDescription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accibsn != null">
+        #{accibsn,jdbcType=VARCHAR},
+      </if>
+      <if test="accuserid != null">
+        #{accuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="accsurplus != null">
+        #{accsurplus,jdbcType=INTEGER},
+      </if>
+      <if test="accaccountname != null">
+        #{accaccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="accpass != null">
+        #{accpass,jdbcType=VARCHAR},
+      </if>
+      <if test="acccreateaddress != null">
+        #{acccreateaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="acccreatetime != null">
+        #{acccreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accdescription != null">
+        #{accdescription,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="dreamer.website.pojo.Account">
+    update accaccount
+    <set>
+      <if test="accuserid != null">
+        accUserId = #{accuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="accsurplus != null">
+        accSurplus = #{accsurplus,jdbcType=INTEGER},
+      </if>
+      <if test="accaccountname != null">
+        accAccountName = #{accaccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="accpass != null">
+        accPass = #{accpass,jdbcType=VARCHAR},
+      </if>
+      <if test="acccreateaddress != null">
+        accCreateAddress = #{acccreateaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="acccreatetime != null">
+        accCreateTime = #{acccreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accdescription != null">
+        accDescription = #{accdescription,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where accIBSN = #{accibsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dreamer.website.pojo.Account">
+    update accaccount
+    set accUserId = #{accuserid,jdbcType=VARCHAR},
+      accSurplus = #{accsurplus,jdbcType=INTEGER},
+      accAccountName = #{accaccountname,jdbcType=VARCHAR},
+      accPass = #{accpass,jdbcType=VARCHAR},
+      accCreateAddress = #{acccreateaddress,jdbcType=VARCHAR},
+      accCreateTime = #{acccreatetime,jdbcType=TIMESTAMP},
+      accDescription = #{accdescription,jdbcType=VARCHAR}
+    where accIBSN = #{accibsn,jdbcType=VARCHAR}
+  </update>
+</mapper>

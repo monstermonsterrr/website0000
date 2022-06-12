@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dreamer.website.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="dreamer.website.pojo.User">
+    <id column="userUserId" jdbcType="VARCHAR" property="useruserid" />
+    <result column="userUserName" jdbcType="VARCHAR" property="userusername" />
+    <result column="userPass" jdbcType="VARCHAR" property="userpass" />
+    <result column="userLoginTime" jdbcType="TIMESTAMP" property="userlogintime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userUserId, userUserName, userPass, userLoginTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accuser
+    where userUserId = #{useruserid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from accuser
+    where userUserId = #{useruserid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="dreamer.website.pojo.User">
+    insert into accuser (userUserId, userUserName, userPass, 
+      userLoginTime)
+    values (#{useruserid,jdbcType=VARCHAR}, #{userusername,jdbcType=VARCHAR}, #{userpass,jdbcType=VARCHAR}, 
+      #{userlogintime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="dreamer.website.pojo.User">
+    insert into accuser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="useruserid != null">
+        userUserId,
+      </if>
+      <if test="userusername != null">
+        userUserName,
+      </if>
+      <if test="userpass != null">
+        userPass,
+      </if>
+      <if test="userlogintime != null">
+        userLoginTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="useruserid != null">
+        #{useruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userusername != null">
+        #{userusername,jdbcType=VARCHAR},
+      </if>
+      <if test="userpass != null">
+        #{userpass,jdbcType=VARCHAR},
+      </if>
+      <if test="userlogintime != null">
+        #{userlogintime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="dreamer.website.pojo.User">
+    update accuser
+    <set>
+      <if test="userusername != null">
+        userUserName = #{userusername,jdbcType=VARCHAR},
+      </if>
+      <if test="userpass != null">
+        userPass = #{userpass,jdbcType=VARCHAR},
+      </if>
+      <if test="userlogintime != null">
+        userLoginTime = #{userlogintime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where userUserId = #{useruserid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dreamer.website.pojo.User">
+    update accuser
+    set userUserName = #{userusername,jdbcType=VARCHAR},
+      userPass = #{userpass,jdbcType=VARCHAR},
+      userLoginTime = #{userlogintime,jdbcType=TIMESTAMP}
+    where userUserId = #{useruserid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByuserandpass" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select count(*)
+    from accuser
+    where userUserName = #{userusername,jdbcType=VARCHAR} and userPass = #{userpass,jdbcType=VARCHAR};
+  </select>
+</mapper>

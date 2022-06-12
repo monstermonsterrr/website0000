@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Add page!</title>
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<h3 style="text-align: center">Account Add</h3>
+<form id="Accountform" th:action="@{/Accadd}" style="text-align: center">
+    ACCIBSN：<input type="text"  id="accIBSN" name="accIBSN"><br>
+    ACCOUNTNAME：<input type="text"  id="accAccountName" name="accAccountName"><br>
+    ACCPASS：<input type="password"  id="accPass" name="accPass"><br>
+    ACCCREEATEADDRESS：<input type="text"  id="accCreateAddress" name="accCreateAddress"><br>
+    ACCDESCRIPTION：<input type="text"  id="accDescription" name="accDescription"><br>
+    <button type="submit" id="submitAcc" name="submitAcc"
+            style="background-color: cornflowerblue">submit now！</button><br>
+</form>
+</body>
+</html>
